@@ -77,13 +77,7 @@ body {
 
 
 
-.body {
-    display: flex;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    align-items:centre;
-    margin-top: 40px; /* Adjust the top margin to make space for the timer */
-}
+
 
 #timer {
     font-size: 48px;
@@ -110,13 +104,13 @@ button {
 /* Specific styling for the stopwatch */
 .stopwatch-container {
     text-align: center;
-    position: relative;
-    top: 65%; /* Move stopwatch further down */
-    left: 50%;
+    position: absolute;
+    top: 75%; /* Move stopwatch further down */
+    right: 70%;
     transform: translate(-50%, -50%); /* Center the stopwatch */
     background-color: #fff;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     margin-top: 40px; /* Add space between the timer and stopwatch */
 }
