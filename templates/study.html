@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Study Deck: {{ deck.name }}
+{% endblock %}
+
+{% block main %}
+    <h1>Study Deck: {{ deck.name }}</h1>
+
+    <div class="card" data-card-id="{{ card.id }}">
+        <h3>{{ card.question }}</h3>  <!-- Card front (question) -->
+
+        <!-- Answer (back of the card) initially hidden -->
+        <p class="card-answer" style="display: none;">{{ card.answer }}</p>
+
+        <!-- Button to reveal the answer -->
+        <button id="reveal-answer-button" class="reveal-button">Show Answer</button>
+
+        <!-- Rating system at the bottom of the screen -->
+        <div class="rating-container">
+            <label for="rating-{{ card.id }}">Rate this card:</label>
+            <div class="rating">
+                <!-- Circle Ratings with Numbers -->
+                <div class="circle-rating" data-rating="1">1</div>
+                <div class="circle-rating" data-rating="2">2</div>
+                <div class="circle-rating" data-rating="3">3</div>
+                <div class="circle-rating" data-rating="4">4</div>
+                <div class="circle-rating" data-rating="5">5</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Move the JS to the bottom -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // When the "Show Answer" button is clicked, reveal the answer
+            $("#reveal-answer-button").click(function() {
+                $(".card-answer").show();   // Show the back of the card
+                $(this).hide();              // Hide the "Show Answer" button
+            });
+
+            // When a rating circle is clicked, update the rating and go to next card
+            $(".circle-rating").click(function() {
+                const rating = $(this).data("rating");  // Get the rating from the clicked circle
+                const cardId = {{ card.id }};  // Use card ID in your JavaScript
+
+                // Send the new rating to the server via POST
+                $.ajax({
+                    type: "POST",
+                    url: "/rate-card",
+                    data: {
+                        card_id: cardId,
+                        rating: rating,
+                    },
+                    success: function(response) {
+                        // After the rating is updated, go to the next card
+                        const deckId = {{ deck.id }};
+                        window.location.href = "/study/" + deckId;  // Redirect to the next card
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("An error occurred: " + error);  // Log error to the console
+                    }
+                });
+            });
+
+            // Add styles to highlight the active circle rating
+            $(".circle-rating").hover(function() {
+                $(this).css("background-color", "#ddd");
+            }, function() {
+                $(this).css("background-color", "");
+            });
+        });
+    </script>
+
+
+
+{% endblock %}

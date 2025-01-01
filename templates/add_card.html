@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Card
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <h1>Add a Card to "{{ deck.name }}"</h1>
+        <form action="/deck/{{ deck.id }}/add" method="POST">
+            <div class="form-group">
+                <label for="question">Question</label>
+                <input type="text" id="question" name="question" class="form-control cue-card-input" required>
+            </div>
+            <div class="form-group">
+
+                <label for="answer">Answer</label>
+                <textarea class="form-control cue-card-textarea" name="answer" placeholder="Enter card text"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Add Card</button>
+        </form>
+
+
+        <a href="/cue-cards" class="btn btn-primary mt-4">Back to Decks</a>
+        <a href="/card/{{ deck.id }}/view" class="btn btn-primary mt-4">Your cards</a>
+    </div>
+{% endblock %}

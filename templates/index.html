@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<div class="container mt-5 pt-5">
+    <div class="text-center mb-4">
+        <h2 class="poppy-text">Poppy,</h2>
+        <h3 class="great-vibes-regular">Where Every Study Session Blooms</h3>
+    </div>
+
+    <!-- Main Row to Center Buttons -->
+    <div class="row justify-content-center">
+
+        <!-- Study Button -->
+        <div class="col-md-4 mb-4">
+            <a href="/study">
+                <div class="card-box cue-card-box">
+                    <h3>Study</h3>
+                    <p>Click here to revise cue cards</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Timer Button -->
+        <div class="col-md-4 mb-4">
+            <a href="/timer">
+                <div class="card-box timer-box">
+                    <h3>Timer</h3>
+                    <p>Click here to set up a timer</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Row for Cue Cards  -->
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-4">
+            <a href="/cue-cards">
+                <div class="card-box cue-card-box">
+                    <h3>Cue Cards</h3>
+                    <p>Manage and add your cue cards</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

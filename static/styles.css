@@ -1,0 +1,277 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 56px;
+    height: 100vh;
+    background:
+        radial-gradient(circle at 20% 30%, #ff6347, transparent 40%),
+        radial-gradient(circle at 80% 80%, #ffa500, transparent 40%),
+        radial-gradient(circle at 50% 50%, #32cd32, transparent 40%),
+        radial-gradient(circle at 10% 80%, #1e90ff, transparent 50%),
+        radial-gradient(circle at 75% 10%, #ff1493, transparent 30%);
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-y: hidden;
+}
+
+.cue-card-input {
+    width: 80%;             /* Make the input take up full width of its container */
+    font-size: 1.5rem;       /* Increase the font size for better readability */
+    padding: 15px;           /* Add padding to make the input taller */
+    border-radius: 5px;      /* Optional: Round the corners */
+}
+
+
+.container {
+    min-height: 100vh;
+    margin-bottom: 70px; /* Ensure the container takes full height */
+}
+
+.cue-card-textarea {
+    width: 80%;             /* Makes the textarea take up full width of the container */
+    height: 150px;           /* Adjust height to allow more lines */
+    font-size: 1.2rem;       /* Increase the font size for easier readability */
+    padding: 15px;           /* Add padding to the inside of the textarea */
+    border-radius: 5px;      /* Optional: Rounds the corners */
+    resize: vertical;
+           /* Optional: Allow the user to resize the textarea vertically */
+}
+
+
+
+/* Adjust the position of the "Your Decks" heading */
+.your-decks-heading {
+    margin-bottom: 60px;/* Top margin to give space from the top of the page */
+    text-align: left; /* Align it to the left */
+    height:-100px;
+}
+/* Scrollable decks container with a max height */
+.decks-list-container {
+    background-color: #fff;
+    max-height: 300px; /* Set a fixed height for the deck list */
+    overflow-y: auto;  /* Add vertical scrollbar when content overflows */
+    margin-top: 10px;  /* Add some space between the heading and the decks list */
+    width: 30
+}
+
+
+.deck-container {
+    padding: 10px;
+    margin-bottom: 2px;
+    border-bottom: 2px solid #ddd;
+}
+
+.cards-list-container {
+    background-color: #fff;
+    max-height: 300px; /* Set a fixed height for the deck list */
+    overflow-y: auto;  /* Add vertical scrollbar when content overflows */
+    margin-top: 0px;  /* Add some space between the heading and the decks list */
+    max-width: 500px;
+    margin-bottom: 2px;
+    padding: 8px;
+    border-bottom: 3px solid #ddd;
+
+}
+
+
+
+.body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px; /* Adjust the top margin to make space for the timer */
+}
+
+#timer {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 30px; /* Adjust the margin to provide space above the timer */
+}
+
+.controls {
+    margin: 20px;
+}
+
+input {
+    font-size: 16px;
+    padding: 5px;
+}
+
+button {
+    font-size: 16px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Specific styling for the stopwatch */
+.stopwatch-container {
+    text-align: center;
+    position: absolute;
+    top: 85%; /* Move stopwatch further down */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the stopwatch */
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    margin-top: 40px; /* Add space between the timer and stopwatch */
+}
+
+#time {
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Buttons styling for the stopwatch */
+.stopwatch-container button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.stopwatch-container button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+.card-box {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-box:hover {
+    transform: scale(1.05);
+}
+
+.card-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.card-box p {
+    font-size: 1rem;
+    color: #555;
+}
+
+
+.cue-card-box {
+    background-color: #ebd61e;
+}
+
+.new-deck {
+    background-color: #4bada5;
+}
+
+
+.timer-box {
+    background-color: #34fadc;
+}
+
+.great-vibes-regular {
+    font-family: "Great Vibes", cursive;
+    font-weight: 500;
+    font-size: 3rem;
+    color: #eb3434;
+    font-style: normal;
+  }
+
+.poppy-text {
+    font-family: 'Great Vibes', cursive;  /* Set the font to Great Vibes */
+    font-size: 3rem;                      /* Set font size */
+    color: #eb3434;                       /* Set color (blue in this case) */
+    margin-top: -100px;                    /* Move the "Poppy" text up */
+}
+
+#stopwatch-heading {
+    margin-top: 200px;   /* Moves the heading down */
+    text-align: center;  /* Correct spelling */
+    font-size: 36px;     /* Fixed the typo */
+}
+
+.logout {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #f00a0a;
+    margin-top: 100px;
+
+}
+
+
+
+.card-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.card-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.card-answer {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #555;
+}
+
+.rating-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.circle-rating {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.circle-rating:hover {
+    background-color: #ddd;
+}
+
+.circle-rating.active {
+    background-color: #4CAF50;
+}
+
+#reveal-answer-button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#reveal-answer-button:hover {
+    background-color: #0056b3;
+}

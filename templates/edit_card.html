@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Card
+{% endblock %}
+
+{% block main %}
+<div class="container mt-5">
+    <h2 class="your-decks-heading mb-4">Edit Card</h2>
+
+    <!-- Edit Card Form -->
+    <form action="" method="POST">
+        <div class="form-group">
+            <label for="question">Question</label>
+            <!-- Pre-fill the question field with the current card's question -->
+            <input type="text" class="form-control" id="question" name="question" value="{{ card.question }}" required>
+        </div>
+        <div class="form-group">
+            <label for="answer">Answer</label>
+            <!-- Pre-fill the answer field with the current card's answer -->
+            <textarea class="form-control" id="answer" name="answer" rows="3" required>{{ card.answer }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

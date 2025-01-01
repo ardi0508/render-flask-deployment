@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cue Cards
+{% endblock %}
+
+{% block main %}
+<div class="container mt-5 pt-5">
+    <!-- Your Decks Heading -->
+    <h2 class="your-decks-heading mb-10">Select Deck:</h2>
+
+    <div class="row" style="margin-top: -60px">
+        <!-- Left Column: Deck List -->
+        <div class="col-md-8">
+            <div class="decks-list-container">
+                <div class="list-group">
+                    {% for deck in decks %}
+                        <div class="deck-container">
+                            <a href="/deck/{{ deck.id }}/add" class="deck-item">
+                                {{ deck.name }}
+                            </p>
+                            <!-- Link to remove the deck -->
+                            <a href="/remove-deck/{{ deck.id }}" class="btn btn-danger btn-sm">Remove</a>
+                        </div>
+                    {% else %}
+                        <p class="text-center">You don't have any decks yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Add Deck Form -->
+        <div class="col-md-4">
+            <h3 class="text-center mb-4">Add a New Deck</h3>
+            <!-- Form to add a new deck -->
+            <form action="/cue-cards" method="POST">
+                <div class="form-group">
+                    <label for="deckName">Deck Name:</label>
+                    <input type="text" class="form-control" id="deckName" name="name" required>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4 w-100">Add Deck</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

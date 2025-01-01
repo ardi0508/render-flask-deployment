@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block title %}
+    Your Cards
+{% endblock %}
+
+{% block main %}
+<div class="container mt-5">
+    <h2 class="your-decks-heading mb-4">Your cards:</h2>
+
+    <div class="row">
+        <div class="cards-list-container">
+            <div class="list-group">
+                {% for card in cards %}
+                    <div class="card-container d-flex justify-content-between align-items-center">
+                        <p>
+                            {{ card.question }}
+                        </p>
+                        <div>
+                            <!-- Link to edit the card -->
+                            <a href="/edit-card/{{ card.id }}" class="btn btn-primary btn-sm">Edit</a>
+                            <!-- Link to remove the card -->
+                            <a href="/remove-card/{{ card.id }}/remove" class="btn btn-danger btn-sm">Remove</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <p class="text-center">You don't have any cards yet.</p>
+                {% endfor %}
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="/deck/{{ deck_id }}/add" class="btn btn-primary">Back to cards</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

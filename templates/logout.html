@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}
+    Logout
+{% endblock %}
+
+{% block main %}
+<form action="/logout" method="post">
+    <div class="logout">
+        <p>We appreciate your dedication to learning with Poppy – keep growing!</p>
+    </div>
+    <div style="text-align: center;">
+        <form action="/login" method="get">
+            <button class="btn btn-primary" type="submit">Confirm Logout</button>
+        </form>
+    </div>
+{% endblock %}
+
+

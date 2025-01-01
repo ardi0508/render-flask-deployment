@@ -1,0 +1,145 @@
+{% extends "layout.html" %}
+{% block title %}
+    timer
+{% endblock %}
+
+{% block main %}
+
+<body class="body" >
+  <h1>Timer</h1>
+  <div class="controls">
+    <label for="timeInput">Set Timer (minutes): </label>
+    <input type="number" id="timeInput" min="1" value="5">
+    <button id="stopButton">Stop Timer</button>
+    <button id="startButton">Start Timer</button>
+  </div>
+  <div id="timer">00:00:00</div>
+  <audio id="alarmSound" src="/static/audio/success.mp3" preload="auto"></audio>
+
+  <script>
+    let interval; // To store the interval
+
+    document.getElementById("startButton").addEventListener("click", () => {
+      const minutes = parseInt(document.getElementById("timeInput").value);
+
+      // Validate input
+      if (isNaN(minutes) || minutes <= 0) {
+        alert("Please enter a valid number of minutes!");
+        return;
+      }
+
+
+
+      startTimer(minutes * 60); // Convert minutes to seconds
+    });
+
+    document.getElementById("stopButton").addEventListener("click", () => {
+      stopTimer();
+    });
+
+    function startTimer(durationInSeconds) {
+      const timerElement = document.getElementById("timer");
+      const alarmSound = document.getElementById("alarmSound");
+      let remainingTime = durationInSeconds;
+
+      clearInterval(interval); // Clear any existing timer
+
+
+
+      interval = setInterval(() => {
+        const hours = Math.floor(remainingTime / 3600);
+        const minutes = Math.floor((remainingTime % 3600) / 60);
+        const seconds = remainingTime % 60;
+
+
+        timerElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+        function playAlarm() {
+    alarmSound.play().catch(error => {
+        console.error("Error playing alarm sound:", error);
+    });
+}
+        if (remainingTime <= 0) {
+          clearInterval(interval);
+          timerElement.textContent = "Time's up!";
+          playAlarm(); // Play the alarm sound
+          alert("Time's up!"); // Show an alert box
+        } else {
+          remainingTime--;
+        }
+      }, 1000);
+    }
+
+    function stopTimer() {
+        clearInterval(interval); // Stops the countdown
+        document.getElementById("timer").textContent = "Timer stopped."; // Updates the display
+    }
+  </script>
+
+   <h2 id="stopwatchHeading">Stopwatch</h2>
+    <div class="stopwatch-container">
+        <div id="time">00:00:00</div>
+        <button id="startStopButton">Start</button>
+        <button id="resetButton">Reset</button>
+    </div>
+
+    <script>
+        let isRunning = false;
+        let timer;
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+
+        const timeDisplay = document.getElementById('time');
+        const startStopButton = document.getElementById('startStopButton');
+        const resetButton = document.getElementById('resetButton');
+
+        // Start/Stop the stopwatch
+        startStopButton.addEventListener('click', function() {
+            if (isRunning) {
+                clearInterval(timer);
+                startStopButton.textContent = 'Start';
+            } else {
+                timer = setInterval(updateTime, 1000);
+                startStopButton.textContent = 'Stop';
+            }
+            isRunning = !isRunning;
+        });
+
+        // Reset the stopwatch
+        resetButton.addEventListener('click', function() {
+            clearInterval(timer);
+            isRunning = false;
+            seconds = 0;
+            minutes = 0;
+            hours = 0;
+            timeDisplay.textContent = '00:00:00';
+            startStopButton.textContent = 'Start';
+        });
+
+        // Function to update the stopwatch time
+        function updateTime() {
+            seconds++;
+            if (seconds === 60) {
+                seconds = 0;
+                minutes++;
+            }
+            if (minutes === 60) {
+                minutes = 0;
+                hours++;
+            }
+            timeDisplay.textContent = formatTime(hours, minutes, seconds);
+        }
+
+        // Format time to display as HH:MM:SS
+        function formatTime(hours, minutes, seconds) {
+            return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+        }
+
+        // Pad the time with leading zeros if necessary
+        function pad(time) {
+            return time < 10 ? '0' + time : time;
+        }
+    </script>
+
+{% endblock %}
